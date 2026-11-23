@@ -1,8 +1,26 @@
 # Noise Box
 
-One-stop-shop guitar "box" plugins (AU/VST3) built with JUCE.
+One-stop-shop guitar "box" plugins (AU/VST3, JUCE) for Ableton Live: a few big knobs, factory and user
+presets, and a hand-drawn UI per style.
 
-- `boxkit/` shared code (look & feel, user presets)
-- `boxes/<Box>/` one plugin per style (Jazz Box so far)
+| Box | Status |
+|---|---|
+| Jazz Box | shipped |
 
-Setup: `git clone --depth 1 --branch 9.0.6 https://github.com/juce-framework/JUCE.git JUCE`, then `./install.sh` (needs cmake + ninja on PATH or in `.tools/`).
+See [BOXES.md](BOXES.md) for the registry and sound goals.
+
+## Quick start
+```bash
+tools/setup.sh                                          # venv (cmake, ninja, analysis libs) + JUCE 9.0.6
+.tools/bin/cmake --build build                          # build all boxes
+.tools/bin/python tools/measure.py box JazzBox --check  # render presets, check clipping/loudness/baseline
+./install.sh JazzBox                                    # install to ~/Library/Audio/Plug-Ins
+tools/new-box.sh FuzzBox Fzbx "Fuzz Box"                # start a new box
+```
+
+**Agents:** read [AGENTS.md](AGENTS.md) first. It has the full workflow, rules and gotchas.
+
+## Layout
+- `boxkit/`: shared code (look & feel, user preset store)
+- `boxes/<Box>/`: one plugin per style (DSP, presets, processor, editor, render tool, baseline)
+- `tools/`: setup, scaffolding and measurement

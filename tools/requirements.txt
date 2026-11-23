@@ -1,0 +1,7 @@
+cmake
+ninja
+numpy
+scipy
+soundfile
+pyloudnorm
+matplotlib

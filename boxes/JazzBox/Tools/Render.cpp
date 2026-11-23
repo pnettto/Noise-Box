@@ -1,10 +1,19 @@
 // Offline render: runs a WAV file through the exact Jazz Box DSP so results can be measured.
 // Usage: JazzBoxRender in.wav out.wav [warmth wood dark squeeze room outputDb]
+//        JazzBoxRender in.wav out.wav preset:N
+//        JazzBoxRender --presets          (prints one factory preset name per line)
 #include <juce_audio_formats/juce_audio_formats.h>
 #include "../Source/Presets.h"
 
 int main (int argc, char* argv[])
 {
+    if (argc == 2 && juce::String (argv[1]) == "--presets")
+    {
+        for (const auto& preset : getFactoryPresets())
+            std::cout << preset.name << "\n";
+        return 0;
+    }
+
     if (argc < 3)
     {
         std::cerr << "usage: JazzBoxRender in.wav out.wav [warmth wood dark squeeze room outputDb]\n";
