@@ -1,0 +1,4 @@
+build/
+.tools/
+JUCE/
+.DS_Store
