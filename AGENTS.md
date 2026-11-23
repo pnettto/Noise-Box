@@ -4,6 +4,10 @@ One-stop-shop guitar "boxes": each box is a small AU/VST3 plugin (JUCE 9.0.6, C+
 knobs, factory presets, user presets and a hand-drawn UI, built for one style of tone. The user records in
 **Ableton Live 12 Suite** on macOS (Apple Silicon) and asks for boxes by style ("make a Fuzz Box").
 
+**This repo is for humans too.** Every box ships with a friendly `boxes/<Box>/README.md` for musicians,
+not just code. Write it in plain language: what it sounds like, what each knob does, presets, playing tips.
+Use [boxes/JazzBox/README.md](boxes/JazzBox/README.md) as the model.
+
 You cannot hear. **Measure everything** with `tools/measure.py` and say what you measured, not how it
 "sounds". The user is the ears: ask them to listen and describe, then translate words into numbers.
 
@@ -64,7 +68,10 @@ Use `.tools/bin/...` (or `export PATH="$PWD/.tools/bin:$PATH"`). Homebrew is not
 8. **Install** with `./install.sh <Box>` (ask the user before writing to ~/Library). `auval` must pass.
    The user must **restart Live**, or rescan for a brand-new plugin.
 9. **Load it in Live** (see below), set a preset, ask the user to play and react, iterate.
-10. Update BOXES.md (status), README if needed, then summarise. Commit or push only when asked.
+10. **Write `boxes/<Box>/README.md`** for humans, following the Jazz Box guide: a one-paragraph pitch, a knob
+    table (what it does / try it), always-on features, a preset table with one-line sound descriptions,
+    user presets, playing tips, and a short "Under the hood" section. Keep it in sync whenever knobs or presets change.
+11. Update BOXES.md (status), add the box to the table in the root README, then summarise. Commit or push only when asked.
 
 ## Changing shared code (boxkit)
 Before: `measure.py box <Box> --check` for every box. After the change, run it again. It must still pass.

@@ -3,9 +3,13 @@
 One-stop-shop guitar "box" plugins (AU/VST3, JUCE) for Ableton Live: a few big knobs, factory and user
 presets, and a hand-drawn UI per style.
 
-| Box | Status |
-|---|---|
-| Jazz Box | shipped |
+This repo is made for **humans and agents alike**. Musicians should be able to open any box's README and
+know what it sounds like and how to use it; developers and AI agents get the technical details in
+[AGENTS.md](AGENTS.md).
+
+| Box | Status | Guide |
+|---|---|---|
+| Jazz Box | shipped | [boxes/JazzBox/README.md](boxes/JazzBox/README.md) |
 
 See [BOXES.md](BOXES.md) for the registry and sound goals.
 

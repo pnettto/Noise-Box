@@ -25,6 +25,26 @@ grep -q "| $DISPLAY |" BOXES.md && { echo "Display name '$DISPLAY' is already ta
 
 cp -R "boxes/$TEMPLATE" "boxes/$NAME"
 rm -f "boxes/$NAME/baseline.json"
+cat > "boxes/$NAME/README.md" <<EOF
+# $DISPLAY
+
+**TODO: one-paragraph pitch: what it sounds like, which guitar/style it is for, what inspired it.**
+
+## The knobs
+| Knob | What it does | Try it |
+|---|---|---|
+
+## Presets
+| Preset | Sound |
+|---|---|
+
+## Playing tips
+
+## Under the hood
+Signal flow: TODO. Plugin code \`$CODE\`, AU + VST3, macOS (Apple Silicon).
+
+<!-- Write this for musicians. Model: ../JazzBox/README.md -->
+EOF
 mv "boxes/$NAME/Source/${TEMPLATE}DSP.h" "boxes/$NAME/Source/${NAME}DSP.h"
 
 find "boxes/$NAME" -type f \( -name '*.h' -o -name '*.cpp' -o -name 'CMakeLists.txt' \) -print0 |
@@ -44,6 +64,7 @@ Still jazz-flavoured, now make it yours (see AGENTS.md > "Adding a box"):
   - boxes/$NAME/Source/Presets.h       factory presets
   - boxes/$NAME/Source/PluginProcessor.cpp  parameter layout (createLayout)
   - boxes/$NAME/Source/PluginEditor.cpp     labels, subtitle, theme/texture
+  - boxes/$NAME/README.md                   human-friendly guide (outline created)
   - BOXES.md                                sound goals row
 Leftover jazz references:
 EOF
