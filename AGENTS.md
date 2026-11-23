@@ -7,6 +7,13 @@ knobs, factory presets, user presets and a hand-drawn UI, built for one style of
 You cannot hear. **Measure everything** with `tools/measure.py` and say what you measured, not how it
 "sounds". The user is the ears: ask them to listen and describe, then translate words into numbers.
 
+## Repo
+- `github.com/pnettto/Noise-Box` (**private**, because of JUCE's AGPL), branch `main`. On the user's Mac the
+  checkout is `~/Development/pibox/plugins/`; personal test recordings sit one level up (never commit them).
+- Commit or push only when the user asks. Permission to commit does not include pushing.
+- `gh` often can't authenticate from the sandbox (the token lives in the Keychain). If a push fails, give
+  the user the exact commands instead of retrying.
+
 ## Layout
 ```
 boxkit/                 shared, header-only: BoxLookAndFeel.h (Theme, knob, wood texture),

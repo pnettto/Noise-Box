@@ -11,6 +11,7 @@ See [BOXES.md](BOXES.md) for the registry and sound goals.
 
 ## Quick start
 ```bash
+git clone https://github.com/pnettto/Noise-Box.git && cd Noise-Box
 tools/setup.sh                                          # venv (cmake, ninja, analysis libs) + JUCE 9.0.6
 .tools/bin/cmake --build build                          # build all boxes
 .tools/bin/python tools/measure.py box JazzBox --check  # render presets, check clipping/loudness/baseline
