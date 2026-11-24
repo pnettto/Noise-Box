@@ -2,7 +2,7 @@
 
 One-stop-shop guitar "boxes": each box is a small AU/VST3 plugin (JUCE 9.0.6, C++17) with a few big
 knobs, factory presets, user presets and a hand-drawn UI, built for one style of tone. The user records in
-**Ableton Live 12 Suite** on macOS (Apple Silicon) and asks for boxes by style ("make a Fuzz Box").
+**Ableton Live 12 Suite** on macOS (Apple Silicon) and asks for boxes by style ("make a Stoner Box").
 
 **This repo is for humans too.** Every box ships with a friendly `boxes/<Box>/README.md` for musicians,
 not just code. Write it in plain language: what it sounds like, what each knob does, presets, playing tips.
@@ -40,7 +40,7 @@ Not in git: `JUCE/`, `.tools/`, `build/` (recreate with `tools/setup.sh`).
 ```bash
 tools/setup.sh                                   # fresh clone: venv (cmake, ninja, numpy...) + JUCE
 .tools/bin/cmake --build build                   # build everything
-.tools/bin/cmake --build build --target FuzzBox_VST3 FuzzBoxRender   # one box
+.tools/bin/cmake --build build --target StonerBox_VST3 StonerBoxRender   # one box
 .tools/bin/python tools/measure.py box JazzBox --check   # render all presets, clip/loudness/baseline checks
 ./install.sh JazzBox                             # install one box (writes outside repo: needs approval)
 tools/new-box.sh FuzzBox Fzbx "Fuzz Box"         # scaffold a new box from Jazz Box

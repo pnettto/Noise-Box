@@ -56,6 +56,37 @@ namespace boxkit
         return img;
     }
 
+    // Rough, dark, worn surface: grain, scratches and blotches (deterministic for a given seed).
+    inline juce::Image makeGritTexture (int w, int h, int seed = 666,
+                                        juce::Colour base = juce::Colour (0xff141210))
+    {
+        juce::Image img (juce::Image::RGB, w, h, true);
+        juce::Graphics g (img);
+        juce::Random rng (seed);
+        g.setGradientFill (juce::ColourGradient (base.brighter (0.15f), (float) w * 0.3f, 0,
+                                                 base.darker (0.5f), (float) w, (float) h, true));
+        g.fillAll();
+        for (int i = 0; i < 60; ++i) // blotches
+        {
+            const float r = 10.0f + rng.nextFloat() * 70.0f;
+            g.setColour ((rng.nextBool() ? juce::Colours::black : base.brighter (0.4f)).withAlpha (0.04f + rng.nextFloat() * 0.06f));
+            g.fillEllipse (rng.nextFloat() * (float) w - r, rng.nextFloat() * (float) h - r, r * 2, r * 1.4f);
+        }
+        for (int i = 0; i < w * h / 6; ++i) // grain
+        {
+            g.setColour ((rng.nextBool() ? juce::Colours::white : juce::Colours::black).withAlpha (0.03f + rng.nextFloat() * 0.07f));
+            g.fillRect (rng.nextInt (w), rng.nextInt (h), 1, 1);
+        }
+        for (int i = 0; i < 90; ++i) // scratches
+        {
+            const float x = rng.nextFloat() * (float) w, y = rng.nextFloat() * (float) h;
+            const float len = 4.0f + rng.nextFloat() * 40.0f, a = rng.nextFloat() * 3.14f;
+            g.setColour (juce::Colours::white.withAlpha (0.03f + rng.nextFloat() * 0.06f));
+            g.drawLine (x, y, x + std::cos (a) * len, y + std::sin (a) * len, 0.5f + rng.nextFloat());
+        }
+        return img;
+    }
+
     // Metal knob with knurled edge, value arc and pointer. Colours come from the Theme.
     class KnobLookAndFeel : public juce::LookAndFeel_V4
     {

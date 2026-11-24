@@ -10,6 +10,7 @@ know what it sounds like and how to use it; developers and AI agents get the tec
 | Box | Status | Guide |
 |---|---|---|
 | Jazz Box | shipped | [boxes/JazzBox/README.md](boxes/JazzBox/README.md) |
+| Stoner Box | in progress (installed, listening tests) | [boxes/StonerBox/README.md](boxes/StonerBox/README.md) |
 
 See [BOXES.md](BOXES.md) for the registry and sound goals.
 

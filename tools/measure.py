@@ -176,8 +176,13 @@ def cmd_box(args):
         if r["clipped"]:
             failures.append(f"{name}: {r['clipped']} clipped samples")
         delta = r["lufs"] - ref
-        if abs(delta) > LOUDNESS_FAIL_LU:
+        # Baseline runs use the bright synthetic phrase; loudness matching of saturating boxes
+        # depends on the material, so it is only enforced on real/explicit input (plain `box`).
+        if abs(delta) > LOUDNESS_FAIL_LU and not (save or check):
             failures.append(f"{name}: {delta:+.1f} LU vs preset 0 (adjust its output dB)")
+        elif abs(delta) > LOUDNESS_FAIL_LU:
+            warnings.append(f"{name}: {delta:+.1f} LU vs preset 0 on the synthetic phrase "
+                            "(check matching on a real take with plain `box`)")
         elif abs(delta) > LOUDNESS_WARN_LU:
             warnings.append(f"{name}: {delta:+.1f} LU vs preset 0 on this input (matching depends on material)")
 

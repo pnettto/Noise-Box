@@ -12,3 +12,4 @@ target_include_directories(boxkit INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Each box is its own plugin. Add new boxes here.
 add_subdirectory(boxes/JazzBox)
+add_subdirectory(boxes/StonerBox)
